@@ -156,56 +156,186 @@ function CarWash() {
           <button type="submit">Confirm Booking</button>
         </form>
       </div>
-
       <style jsx="true">{`
-        .container {
-          font-family: Arial, sans-serif;
-          padding: 20px;
-          margin: auto;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          padding: 20px;
-          max-width: 800px;
-        }
+  .container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 40px;
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 950px;
+    margin: 30px auto;
+    overflow: hidden;
+  }
 
-        .service-selection,
-        .vehicle-info,
-        .image-upload,
-        .estimate,
-        .booking {
-          margin-bottom: 20px;
-        }
+  .service-selection,
+  .vehicle-info,
+  .image-upload,
+  .estimate,
+  .booking {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+  }
 
-        input[type="text"],
-        input[type="number"],
-        input[type="file"],
-        select,
-        input[type="date"],
-        input[type="time"] {
-          width: 100%;
-          padding: 10px;
-          margin: 10px 0;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-        }
+  .service-selection h2,
+  .vehicle-info h2,
+  .estimate h2,
+  .booking h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
 
-        button {
-          padding: 10px 20px;
-          background-color: #4caf50;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
+  /* Service Selection */
+  select,
+  button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
 
-        button:hover {
-          background-color: #45a049;
-        }
+  select {
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+  }
 
-        h2 {
-          font-size: 1.5em;
-          color: #333;
-        }
-      `}</style>
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    margin-top: 15px;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  /* Input Fields */
+  input[type="text"],
+  input[type="number"],
+  input[type="file"],
+  select,
+  input[type="date"],
+  input[type="time"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+  }
+
+  input[type="file"] {
+    background-color: #fff;
+    padding: 5px;
+  }
+
+  input[type="date"],
+  input[type="time"] {
+    background-color: #fff;
+  }
+
+  /* Estimate Section */
+  .estimate p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 10px 0;
+  }
+
+  /* Vehicle Info Section */
+  .vehicle-info input {
+    background-color: #fff;
+    margin-bottom: 12px;
+  }
+
+  /* Upload Image Section */
+  .image-upload input[type="file"] {
+    background-color: #fff;
+  }
+
+  /* Booking Section */
+  .booking form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .booking input[type="date"],
+  .booking input[type="time"] {
+    margin-bottom: 15px;
+  }
+
+  .booking button {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .booking button:hover {
+    background-color: #45a049;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;
+      margin: 20px auto;
+      box-shadow: none;
+    }
+
+    .service-selection,
+    .vehicle-info,
+    .image-upload,
+    .estimate,
+    .booking {
+      padding: 18px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+
+  /* Additional Styling */
+  .container h2 {
+    color: #444;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: bold;
+  }
+
+  /* Card shadow effect */
+  .service-selection:hover,
+  .vehicle-info:hover,
+  .image-upload:hover,
+  .estimate:hover,
+  .booking:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+`}</style>
+
     </div>
   );
 }

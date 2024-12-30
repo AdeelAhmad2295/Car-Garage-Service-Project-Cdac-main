@@ -2,169 +2,206 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
-
-
-
-  // State for form data
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("user");
 
-    const navigate = useNavigate();
-  
+  const navigate = useNavigate();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Email:", email);
+    console.log("Password:", password);
+    console.log("Role:", role);
 
-  // Handle form submission
-   const handleSubmit = (e) => {
-     e.preventDefault();
-
-     // Here you can add logic to handle the login process, e.g., sending data to an API
-     console.log("Email:", email);
-     console.log("Password:", password);
-
-     // After successful login, navigate to the home page
-     navigate("/"); // Redirect to home page after login
-   };
+    if (role === "admin") {
+      navigate("/admin-dashboard");
+    } else {
+      navigate("/");
+    }
+  };
 
   return (
     <>
-      <div className="container mt-5">
-        <h2>Login Form</h2>
+      <div className="container">
+        <h2>Login</h2>
         <form onSubmit={handleSubmit}>
-          <table>
-            <tr>
-              <td>
-                <label htmlFor="email">Email:</label>
-              </td>
-              <td>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="password">Password:</label>
-              </td>
-              <td>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="2">
-                <button type="submit">Login</button>
-              </td>
-            </tr>
-          </table>
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="role">Login as</label>
+            <select
+              id="role"
+              name="role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              required
+            >
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+
+          <button type="submit">Login</button>
         </form>
-        <div className="forgot-password">
-          <a href="#">Forgot Password?</a>
+
+        <div className="extra-links">
+          <a href="#" className="forgot-password">
+            Forgot Password?
+          </a>
         </div>
 
-        {/* Registration Link */}
-        <div className="register-link">
+        <div className="extra-links">
           <p>
             Don't have an account? <Link to="/register">Register Here</Link>
           </p>
         </div>
       </div>
 
-      {/* Inline CSS Styles */}
       <style jsx>{`
         .container {
-          background: #ffffff;
-          border: 1px solid #ddd;
-          border-radius: 8px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          padding: 20px;
           max-width: 400px;
-          width: 90%;
+          margin: 80px auto;
+          padding: 40px;
+          background: linear-gradient(145deg, #ffffff, #f3f4f6);
+          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+          border-radius: 16px;
+          font-family: "Poppins", sans-serif;
+          text-align: center;
         }
 
         h2 {
-          text-align: center;
-          color: #333;
+          font-size: 28px;
+          color: #2c3e50;
+          margin-bottom: 30px;
+          font-weight: bold;
+        }
+
+        .form-group {
+          text-align: left;
           margin-bottom: 20px;
         }
 
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-
-        td {
-          padding: 10px 0;
-        }
-
         label {
-          font-weight: bold;
-          color: #555;
+          display: block;
+          font-size: 14px;
+          font-weight: 500;
+          color: #555555;
+          margin-bottom: 8px;
         }
 
-        input {
-          width: calc(100% - 20px);
-          padding: 8px 10px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
+        input,
+        select {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #e1e1e1;
+          border-radius: 8px;
           font-size: 14px;
-          margin-top: 5px;
+          transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+          border-color: #4a90e2;
+          box-shadow: 0 0 6px rgba(74, 144, 226, 0.5);
         }
 
         button {
-          background: #4caf50;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          padding: 10px 15px;
-          font-size: 16px;
-          cursor: pointer;
           width: 100%;
-          margin-top: 10px;
+          padding: 14px 20px;
+          font-size: 16px;
+          font-weight: bold;
+          color: white;
+          background: linear-gradient(135deg, #4a90e2, #007aff);
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background 0.3s ease, transform 0.2s ease;
+          margin-top: 20px;
         }
 
         button:hover {
-          background: #45a049;
+          background: linear-gradient(135deg, #007aff, #0056b3);
+          transform: translateY(-2px);
+        }
+
+        button:active {
+          background: #0056b3;
+          transform: translateY(0);
+        }
+
+        .extra-links {
+          margin-top: 15px;
         }
 
         .forgot-password {
-          text-align: center;
-          margin-top: 10px;
-        }
-
-        .forgot-password a {
-          color: #007bff;
+          font-size: 14px;
+          color: #4a90e2;
           text-decoration: none;
         }
 
-        .forgot-password a:hover {
+        .forgot-password:hover {
           text-decoration: underline;
         }
 
-        .register-link {
-          text-align: center;
-          margin-top: 10px;
+        .extra-links p {
+          font-size: 14px;
+          color: #555555;
         }
 
-        .register-link a {
-          color: #007bff;
+        .extra-links a {
+          font-size: 14px;
+          color: #4a90e2;
           text-decoration: none;
+          font-weight: 600;
         }
 
-        .register-link a:hover {
+        .extra-links a:hover {
           text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+          .container {
+            padding: 20px;
+          }
+
+          h2 {
+            font-size: 24px;
+          }
+
+          input,
+          select {
+            font-size: 14px;
+            padding: 10px;
+          }
+
+          button {
+            font-size: 14px;
+            padding: 12px;
+          }
         }
       `}</style>
     </>

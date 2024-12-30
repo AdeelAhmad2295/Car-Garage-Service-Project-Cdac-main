@@ -152,56 +152,177 @@ function BatteryService() {
           <button type="submit">Confirm Booking</button>
         </form>
       </div>
-
       <style jsx="true">{`
-        .container {
-          font-family: Arial, sans-serif;
-          padding: 20px;
-          margin: auto;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          padding: 20px;
-          max-width: 800px;
-        }
+  .container {
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    margin: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-width: 900px;
+    overflow: hidden;
+  }
 
-        .service-selection,
-        .vehicle-info,
-        .image-upload,
-        .estimate,
-        .booking {
-          margin-bottom: 20px;
-        }
+  .service-selection,
+  .vehicle-info,
+  .image-upload,
+  .estimate,
+  .booking {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
-        input[type="text"],
-        input[type="number"],
-        input[type="file"],
-        select,
-        input[type="date"],
-        input[type="time"] {
-          width: 100%;
-          padding: 10px;
-          margin: 10px 0;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-        }
+  h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+  }
 
-        button {
-          padding: 10px 20px;
-          background-color: #4caf50;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
+  h3 {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 10px;
+  }
 
-        button:hover {
-          background-color: #45a049;
-        }
+  label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+  }
 
-        h2 {
-          font-size: 1.5em;
-          color: #333;
-        }
-      `}</style>
+  input[type="text"],
+  input[type="number"],
+  input[type="file"],
+  select,
+  input[type="date"],
+  input[type="time"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  input[type="file"]:focus,
+  select:focus,
+  input[type="date"]:focus,
+  input[type="time"]:focus {
+    border-color: #4caf50;
+    outline: none;
+  }
+
+  select {
+    padding: 12px;
+  }
+
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .estimate {
+    background-color: #e8f4e5;
+    padding: 20px;
+    border-radius: 8px;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .estimate p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .error {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+
+  .service-selection button {
+    width: 100%;
+  }
+
+  .image-upload input[type="file"] {
+    padding: 10px;
+  }
+
+  .booking {
+    display: grid;
+    gap: 20px;
+  }
+
+  .booking input[type="date"],
+  .booking input[type="time"] {
+    width: 100%;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+      margin: 0;
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    button {
+      padding: 10px;
+    }
+
+    .service-selection,
+    .vehicle-info,
+    .image-upload,
+    .estimate,
+    .booking {
+      padding: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 1.4rem;
+    }
+
+    .container {
+      padding: 10px;
+    }
+  }
+`}</style>
+
     </div>
   );
 }

@@ -10,7 +10,6 @@ import Admin from "./Components/Admin";
 import Header from "./Components/admin/Header";
 
 //Routing of the admin components
-
 import AdminDash from "./Components/admin/AdminDash";
 import StaffList from "./Components/admin/Staffmanagment";
 import AdminForm from "./Components/AdminForm";
@@ -25,7 +24,18 @@ import WindshieldAndGlass from "./Components/WindshieldAndGlass";
 import LightsAndFitments from "./Components/LightsAndFitments";
 import EngineDecarbonization from "./Components/EngineDecarbonization";
 import CarWash from "./Components/CarWash";
-import AcceptRequest from "./Components/admin/AcceptRequest";
+import CustomerList from "./Components/admin/CustomerList";
+import AcceptRequestForm from "./Components/admin/AcceptRequest";
+//Routing of the Customer components
+
+import CustomerUpdateDetails from "./Components/customers/CustomerUpdateDetails";
+import CustomerContactSupport from "./Components/customers/CustomerContactSupport";
+import CustomerViewService from "./Components/customers/CustomerViewService";
+
+
+import CustomerDash from "./Components/customers/CustomerDash";
+import CustomerForm from "./Components/CustomerForm";
+import RegisterSuccess from "./Components/Registersuccess";
 
 const projectRouter = createBrowserRouter([
   {
@@ -45,6 +55,10 @@ const projectRouter = createBrowserRouter([
         element: <AdminForm />,
       },
       {
+        path: "/customer-login",
+        element: <CustomerForm />,
+      },
+      {
         path: "/about",
         element: <About />,
       },
@@ -62,7 +76,7 @@ const projectRouter = createBrowserRouter([
         element: <BatteryService />,
       },
 
-      //Adimin Routing
+      //Admin Routing
       {
         path: "/admin-dashboard", // Relative path under /admin
         element: <AdminDash />,
@@ -72,12 +86,16 @@ const projectRouter = createBrowserRouter([
         element: <StaffList />,
       },
       {
+        path: "/customer", // Relative path under /admin
+        element: <CustomerList />,
+      },
+      {
         path: "/assign-task", // Admin routing
         element: <AssignTask />,
       },
       {
         path: "/accept-request", // Admin routing
-        element: <AcceptRequest />,
+        element: <AcceptRequestForm />,
       },
       {
         path: "/DentingAndPainting", // Admin routing
@@ -115,6 +133,30 @@ const projectRouter = createBrowserRouter([
       {
         path: "/carwash",
         element: <CarWash />, // New route for Car Wash
+      },
+
+
+      
+      //customer Routing
+      {
+      path: "/customer-dash",
+      element: <CustomerDash />, // New route for Car Wash
+      },
+      {
+        path: "/customer-update-details",
+        element: <CustomerUpdateDetails />, // New route for Car Wash
+      },
+      {
+        path: "/customer-contact-support",
+        element: <CustomerContactSupport />, // New route for Car Wash
+      },
+      {
+        path: "/customer-view-service",
+        element: <CustomerViewService />, // New route for Car Wash
+      },
+      {
+        path: "/registersuccess" ,
+        element: <RegisterSuccess />, // New route for Car Wash
       },
     ],
   },

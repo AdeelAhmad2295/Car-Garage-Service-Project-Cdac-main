@@ -1,203 +1,269 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Register() {
-  // State for form data
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole] = useState(""); // State for the role
+const CustomerForm = () => {
+  // State to store form data
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    password: "",
+    role: "",
+  });
 
-  // Use navigate from react-router-dom to programmatically route
+  // State for form errors
+  const [errors, setErrors] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    password: "",
+    role: "",
+  });
+
+  // Initialize useNavigate hook
   const navigate = useNavigate();
 
-  // Handle role change and navigate
-  const handleRoleChange = (e) => {
-    const selectedRole = e.target.value;
-    setRole(selectedRole);
+  // Handle change of input fields
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-    // Navigate based on the selected role
-    if (selectedRole === "admin") {
-      navigate("/admin-login"); // Navigate to Admin Component
-    } else if (selectedRole === "") {
-      navigate("/login");
+  // Form validation function
+  const validateForm = () => {
+    let formErrors = {};
+    let valid = true;
+
+    if (!formData.fullName) {
+      formErrors.fullName = "Full Name is required";
+      valid = false;
     }
+
+    if (!formData.email) {
+      formErrors.email = "Email is required";
+      valid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      formErrors.email = "Email address is invalid";
+      valid = false;
+    }
+
+    if (!formData.phoneNumber) {
+      formErrors.phoneNumber = "Phone Number is required";
+      valid = false;
+    }
+
+    if (!formData.address) {
+      formErrors.address = "Address is required";
+      valid = false;
+    }
+
+    if (!formData.password) {
+      formErrors.password = "Password is required";
+      valid = false;
+    }
+
+    if (!formData.role) {
+      formErrors.role = "Role is required";
+      valid = false;
+    }
+
+    setErrors(formErrors);
+    return valid;
   };
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
+    if (validateForm()) {
+      console.log("Form Submitted", formData);
+      navigate("/registersuccess"); // Redirect to the success page
     }
-
-    // Log the form data (or send it to an API)
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Confirm Password:", confirmPassword);
-    console.log("Role:", role);
-
-    // Navigate after successful registration
-    navigate("/login"); // Redirect to login page after successful registration
   };
 
   return (
-    <>
-      <div className="container mt-5">
-        <h2>User Register Form</h2>
+    <div className="registration-form-container">
+      <div className="registration-form">
+        <h2>Customer Registration</h2>
         <form onSubmit={handleSubmit}>
-          <table>
-            <tr>
-              <td>
-                <label htmlFor="name">Name:</label>
-              </td>
-              <td>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Enter your full name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="email">Email:</label>
-              </td>
-              <td>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="password">Password:</label>
-              </td>
-              <td>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="confirmPassword">Confirm Password:</label>
-              </td>
-              <td>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  placeholder="Confirm your password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="role">Role:</label>
-              </td>
-              <td>
-                <select
-                  id="role"
-                  name="role"
-                  value={role}
-                  onChange={handleRoleChange} // Listen to role change
-                >
-                  <option value="">Select Role</option>
-                  <option value="admin">Admin</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="2">
-                <button type="submit">Register</button>
-              </td>
-            </tr>
-          </table>
+          <div className="input-group">
+            <label>Full Name</label>
+            <input
+              type="text"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
+              className={errors.fullName ? "error" : ""}
+            />
+            {errors.fullName && <span className="error-message">{errors.fullName}</span>}
+          </div>
+
+          <div className="input-group">
+            <label>Email Address</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={errors.email ? "error" : ""}
+            />
+            {errors.email && <span className="error-message">{errors.email}</span>}
+          </div>
+
+          <div className="input-group">
+            <label>Phone Number</label>
+            <input
+              type="text"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              className={errors.phoneNumber ? "error" : ""}
+            />
+            {errors.phoneNumber && <span className="error-message">{errors.phoneNumber}</span>}
+          </div>
+
+          <div className="input-group">
+            <label>Address</label>
+            <input
+              type="text"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              className={errors.address ? "error" : ""}
+            />
+            {errors.address && <span className="error-message">{errors.address}</span>}
+          </div>
+
+          <div className="input-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className={errors.password ? "error" : ""}
+            />
+            {errors.password && <span className="error-message">{errors.password}</span>}
+          </div>
+
+          <div className="input-group">
+            <label>Role</label>
+            <select
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className={errors.role ? "error" : ""}
+            >
+              <option value="">Select Role</option>
+              <option value="admin">Admin</option>
+              <option value="Customer">Customer</option>
+            </select>
+            {errors.role && <span className="error-message">{errors.role}</span>}
+          </div>
+
+          <button type="submit" className="submit-btn">Register</button>
         </form>
       </div>
 
-      {/* Inline CSS Styles */}
       <style jsx>{`
-        .container {
-          background: #ffffff;
-          border: 1px solid #ddd;
+        .registration-form-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background-color: #f4f7fc;
+        }
+
+        .registration-form {
+          width: 100%;
+          max-width: 450px;
+          background-color: white;
           border-radius: 8px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          padding: 20px;
-          max-width: 400px;
-          width: 90%;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          padding: 30px;
+          margin: 20px;
         }
 
         h2 {
           text-align: center;
+          font-size: 24px;
+          margin-bottom: 20px;
           color: #333;
+        }
+
+        .input-group {
           margin-bottom: 20px;
         }
 
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-
-        td {
-          padding: 10px 0;
-        }
-
         label {
-          font-weight: bold;
-          color: #555;
-        }
-
-        input,
-        select {
-          width: calc(100% - 20px);
-          padding: 8px 10px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
           font-size: 14px;
-          margin-top: 5px;
+          font-weight: 600;
+          color: #555;
+          margin-bottom: 8px;
+          display: block;
         }
 
-        button {
-          background: #4caf50;
+        input, select {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          font-size: 14px;
+          margin-top: 8px;
+          transition: border-color 0.3s;
+        }
+
+        input.error, select.error {
+          border-color: red;
+        }
+
+        .error-message {
+          color: red;
+          font-size: 12px;
+          margin-top: 4px;
+        }
+
+        button.submit-btn {
+          width: 100%;
+          padding: 14px;
+          background-color: #007bff;
           color: white;
           border: none;
-          border-radius: 4px;
-          padding: 10px 15px;
+          border-radius: 6px;
           font-size: 16px;
           cursor: pointer;
-          width: 100%;
-          margin-top: 10px;
+          transition: background-color 0.3s;
         }
 
-        button:hover {
-          background: #45a049;
+        button.submit-btn:hover {
+          background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+          .registration-form {
+            padding: 20px;
+            margin: 10px;
+          }
+
+          h2 {
+            font-size: 20px;
+          }
+
+          input, select {
+            font-size: 16px;
+          }
+
+          button.submit-btn {
+            font-size: 18px;
+          }
         }
       `}</style>
-    </>
+    </div>
   );
-}
+};
+
+export default CustomerForm;

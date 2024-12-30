@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
+import { Link } from "react-router-dom"; 
 
-export default function AcceptRequestForm() {
+export default function AcceptRequest() {
   const [formDetails, setFormDetails] = useState({
     customerName: "",
     contactNumber: "",
     serviceType: "",
     additionalNotes: "",
   });
+
+  const navigate = useNavigate(); // For navigating to CustomerViewService
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -17,26 +21,14 @@ export default function AcceptRequestForm() {
   };
 
   const acceptRequest = () => {
-    const { customerName, contactNumber, serviceType, additionalNotes } =
-      formDetails;
+    const { customerName, contactNumber, serviceType, additionalNotes } = formDetails;
 
-    if (
-      !customerName.trim() ||
-      !contactNumber.trim() ||
-      !serviceType.trim()
-    ) {
+    if (!customerName.trim() || !contactNumber.trim() || !serviceType.trim()) {
       alert("Please fill out all required fields.");
       return;
     }
 
-    alert(`
-      Request Details:
-      - Customer Name: ${customerName}
-      - Contact Number: ${contactNumber}
-      - Service Type: ${serviceType}
-      - Additional Notes: ${additionalNotes || "N/A"}
-      \nThe request has been accepted!
-    `);
+    // Logic for accepting the request can include sending the request to the server
 
     // Reset form fields
     setFormDetails({
@@ -45,6 +37,8 @@ export default function AcceptRequestForm() {
       serviceType: "",
       additionalNotes: "",
     });
+
+    alert("Request accepted!");
   };
 
   return (
@@ -96,6 +90,10 @@ export default function AcceptRequestForm() {
       <button onClick={acceptRequest} style={styles.button}>
         Accept Request
       </button>
+
+      <Link to="/admin-dashboard" style={styles.backButton}>
+        Back to Dashboard
+      </Link>
     </div>
   );
 }
@@ -105,37 +103,54 @@ const styles = {
     padding: "20px",
     maxWidth: "500px",
     margin: "50px auto",
-    border: "1px solid #ccc",
-    borderRadius: "8px",
-    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+    backgroundColor: "#ffffff",
+    borderRadius: "12px",
+    boxShadow: "0 6px 12px rgba(0, 0, 0, 0.15)",
     textAlign: "center",
-    fontFamily: "Arial, sans-serif",
+    fontFamily: "'Roboto', sans-serif",
   },
   inputGroup: {
-    marginBottom: "15px",
+    marginBottom: "20px",
     textAlign: "left",
   },
   label: {
     display: "block",
     marginBottom: "8px",
-    fontSize: "16px",
-    fontWeight: "bold",
+    fontSize: "15px",
+    fontWeight: "600",
+    color: "#333",
   },
   input: {
     width: "100%",
-    padding: "10px",
+    padding: "12px",
     fontSize: "14px",
-    borderRadius: "4px",
-    border: "1px solid #ccc",
+    borderRadius: "8px",
+    border: "1px solid #ddd",
+    backgroundColor: "#f9f9f9",
     outline: "none",
+    transition: "border-color 0.3s",
   },
   button: {
-    padding: "10px 20px",
+    padding: "12px 20px",
     fontSize: "16px",
-    backgroundColor: "#28a745",
-    color: "#fff",
+    fontWeight: "600",
+    backgroundColor: "#007bff",
+    color: "#ffffff",
     border: "none",
-    borderRadius: "4px",
+    borderRadius: "8px",
     cursor: "pointer",
+    transition: "background-color 0.3s",
+  },
+  backButton: {
+    display: "inline-block",
+    padding: "12px 20px",
+    fontSize: "16px",
+    fontWeight: "600",
+    backgroundColor: "#28a745",
+    color: "#ffffff",
+    textDecoration: "none",
+    borderRadius: "8px",
+    marginTop: "20px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
   },
 };

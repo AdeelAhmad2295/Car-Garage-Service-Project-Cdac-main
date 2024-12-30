@@ -155,12 +155,13 @@ function EngineDecarbonization() {
 
       <style jsx="true">{`
         .container {
-          font-family: Arial, sans-serif;
-          padding: 20px;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #f4f7f6;
+          padding: 30px;
           margin: auto;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          padding: 20px;
-          max-width: 800px;
+          border-radius: 8px;
+          max-width: 850px;
         }
 
         .service-selection,
@@ -171,6 +172,13 @@ function EngineDecarbonization() {
           margin-bottom: 20px;
         }
 
+        h2 {
+          font-size: 1.6em;
+          color: #2f4f4f;
+          margin-bottom: 10px;
+          text-align: center;
+        }
+
         input[type="text"],
         input[type="number"],
         input[type="file"],
@@ -178,28 +186,84 @@ function EngineDecarbonization() {
         input[type="date"],
         input[type="time"] {
           width: 100%;
-          padding: 10px;
+          padding: 12px;
           margin: 10px 0;
-          border: 1px solid #ccc;
-          border-radius: 5px;
+          border: 2px solid #ddd;
+          border-radius: 6px;
+          font-size: 1em;
+          background-color: #fff;
+        }
+
+        input[type="file"] {
+          padding: 5px;
+        }
+
+        select {
+          padding: 12px;
+          background-color: #fff;
+          border: 2px solid #ddd;
+          border-radius: 6px;
         }
 
         button {
-          padding: 10px 20px;
+          padding: 12px 24px;
           background-color: #4caf50;
           color: white;
           border: none;
-          border-radius: 5px;
+          border-radius: 6px;
           cursor: pointer;
+          font-size: 1.2em;
+          transition: background-color 0.3s ease;
+          width: 100%;
         }
 
         button:hover {
           background-color: #45a049;
         }
 
-        h2 {
-          font-size: 1.5em;
+        .estimate,
+        .booking {
+          background-color: #f1f1f1;
+          padding: 20px;
+          border-radius: 8px;
+        }
+
+        .estimate p,
+        .booking p {
+          font-size: 1.1em;
           color: #333;
+        }
+
+        .booking form input {
+          margin-bottom: 15px;
+        }
+
+        .image-upload input[type="file"] {
+          border: none;
+        }
+
+        @media (max-width: 600px) {
+          .container {
+            padding: 20px;
+          }
+
+          h2 {
+            font-size: 1.4em;
+          }
+
+          button {
+            font-size: 1em;
+          }
+
+          input[type="text"],
+          input[type="number"],
+          input[type="file"],
+          select,
+          input[type="date"],
+          input[type="time"] {
+            font-size: 0.9em;
+            padding: 10px;
+          }
         }
       `}</style>
     </div>

@@ -154,54 +154,181 @@ function WindshieldAndGlass() {
       </div>
 
       <style jsx="true">{`
-        .container {
-          font-family: Arial, sans-serif;
-          padding: 20px;
-          margin: auto;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          padding: 20px;
-          max-width: 800px;
-        }
+  /* Global container styling */
+  .container {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    padding: 40px;
+    margin: auto;
+    max-width: 900px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
 
-        .service-selection,
-        .vehicle-info,
-        .image-upload,
-        .estimate,
-        .booking {
-          margin-bottom: 20px;
-        }
+  /* Hover effect for the container */
+  .container:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
 
-        input[type="text"],
-        input[type="number"],
-        input[type="file"],
-        select,
-        input[type="date"],
-        input[type="time"] {
-          width: 100%;
-          padding: 10px;
-          margin: 10px 0;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-        }
+  /* Section container styling */
+  .service-selection,
+  .vehicle-info,
+  .image-upload,
+  .estimate,
+  .booking {
+    margin-bottom: 30px;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
 
-        button {
-          padding: 10px 20px;
-          background-color: #4caf50;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
+  /* Heading styling */
+  h2 {
+    font-size: 1.75rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 
-        button:hover {
-          background-color: #45a049;
-        }
+  /* Styling the service selection dropdown */
+  select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
 
-        h2 {
-          font-size: 1.5em;
-          color: #333;
-        }
-      `}</style>
+  /* Styling for select on focus */
+  select:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+    outline: none;
+  }
+
+  /* Styling for form input fields */
+  input[type="text"],
+  input[type="number"],
+  input[type="file"],
+  input[type="date"],
+  input[type="time"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+
+  /* Focus effect for input fields */
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  input[type="file"]:focus,
+  input[type="date"]:focus,
+  input[type="time"]:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+    outline: none;
+  }
+
+  /* Button styling */
+  button {
+    padding: 12px 20px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+  }
+
+  /* Hover effect for buttons */
+  button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+  }
+
+  /* Disabled button state */
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  /* Estimate section styling */
+  .estimate {
+    background-color: #e8f4e5;
+    color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Image upload section */
+  .image-upload input[type="file"] {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+
+  /* Booking form styling */
+  .booking {
+    display: grid;
+    gap: 20px;
+  }
+
+  .booking input[type="date"],
+  .booking input[type="time"] {
+    width: 100%;
+  }
+
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    button {
+      padding: 10px;
+    }
+
+    .service-selection,
+    .vehicle-info,
+    .image-upload,
+    .estimate,
+    .booking {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 15px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    button {
+      padding: 12px;
+    }
+  }
+`}</style>
+
     </div>
   );
 }

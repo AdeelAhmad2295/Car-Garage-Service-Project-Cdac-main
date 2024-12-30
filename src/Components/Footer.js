@@ -1,141 +1,170 @@
-import React from "react";
+import React from 'react';
 
-function Footer() {
+const Footer = () => {
+  const styles = {
+    footer: {
+      backgroundColor: '#f1e4e9', // Lighter soft pinkish beige
+      color: '#4c3d4e', // Deep muted purple for text
+      padding: '30px 20px',
+      fontFamily: 'Arial, sans-serif',
+      textAlign: 'center',
+    },
+    footerContainer: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+      gap: '30px',
+      justifyItems: 'start',
+      marginBottom: '20px',
+    },
+    section: {
+      padding: '10px',
+      textAlign: 'left',
+      marginBottom: '20px', // Add margin to make sections have equal space
+    },
+    header: {
+      color: '#9b4a7f', // Accent purple for headers
+      fontWeight: '600',
+      fontSize: '18px',
+      marginBottom: '12px',
+    },
+    paragraph: {
+      fontSize: '14px',
+      lineHeight: '1.6',
+      margin: '0 0 10px',
+      color: '#5c4754', // Muted purple for readability
+    },
+    link: {
+      color: '#9b4a7f', // Accent purple for links
+      textDecoration: 'none',
+      transition: 'color 0.3s ease',
+      display: 'block',
+      marginBottom: '8px',
+    },
+    linkHover: {
+      color: '#6b2d6c', // Darker purple for hover effect
+    },
+    list: {
+      listStyle: 'none',
+      padding: '0',
+      margin: '0',
+    },
+    listItem: {
+      marginBottom: '8px',
+    },
+    servicesList: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(2, 1fr)', // 2 columns
+      gap: '30px',
+      marginBottom: '20px', // To make the services section distance equal
+    },
+    appLink: {
+      width: '150px',
+      marginTop: '15px',
+    },
+    divider: {
+      marginTop: '40px',
+      borderTop: '1px solid #e5d7e1', // Subtle divider in matching tone
+      textAlign: 'center',
+      paddingTop: '20px',
+      backgroundColor: '#6a4e72',
+    },
+    dividerText: {
+      marginTop: '10px',
+      marginBottom: '10px',
+      fontSize: '12px',
+      color: 'White', // Light muted purple for footer text
+    },
+    contactInfo: {
+      fontSize: '14px',
+      color: '#5c4754', // Muted purple for contact info
+    },
+  };
+
+ 
+
+
   return (
     <footer style={styles.footer}>
-      <div style={styles.container}>
-        <div style={styles.column}>
-          <h4 style={styles.columnTitle}>Garage Services</h4>
+      <div style={styles.footerContainer}>
+        <div style={styles.section}>
+          <h4 style={styles.header}>Contact Information</h4>
+          <p style={styles.paragraph}>
+            Ready to book your car repair and maintenance service with MMC Garage? If yes, get ready
+            to experience quality car repair solutions at affordable prices.
+          </p>
+          <p style={styles.paragraph}>
+            We are just one click away if you are looking for excellence in car servicing and
+            maintenance.
+          </p>
+        </div>
+
+        <div style={styles.section}>
+          <h4 style={styles.header}>Quick Links</h4>
           <ul style={styles.list}>
             <li style={styles.listItem}>
-              <a href="/" style={styles.link}>
-                Our Services
-              </a>
+              <a style={styles.link} href="#about">About Us</a>
             </li>
             <li style={styles.listItem}>
-              <a href="/about" style={styles.link}>
-                About Us
-              </a>
+              <a style={styles.link} href="#contact">Contact Us</a>
             </li>
             <li style={styles.listItem}>
-              <a href="/contact" style={styles.link}>
-                Contact
-              </a>
+              <a style={styles.link} href="#faq">FAQ</a>
+            </li>
+            <li style={styles.listItem}>
+              <a style={styles.link} href="#blog">Blog</a>
+            </li>
+            <li style={styles.listItem}>
+              <a style={styles.link} href="#privacy">Privacy Policy</a>
+            </li>
+            <li style={styles.listItem}>
+              <a style={styles.link} href="#terms">Terms and Conditions</a>
             </li>
           </ul>
         </div>
 
-        <div style={styles.column}>
-          <h4 style={styles.columnTitle}>Contact Information</h4>
-          <ul style={styles.list}>
-            <li style={styles.listItem}>
-              <strong>Phone:</strong>{" "}
-              <a href="tel:+1234567890" style={styles.link}>
-                8080056951
-              </a>
-            </li>
-            <li style={styles.listItem}>
-              <strong>Email:</strong>{" "}
-              <a href="mailto:info@garage.com" style={styles.link}>
-                urjaautomotive@gmail.com
-              </a>
-            </li>
-            <li style={styles.listItem}>
-              <strong>Address:</strong> Pachwati, Sri Ram Nagar, Konark Nagar,
-              Nashik, Maharashtra 422006
-            </li>
-          </ul>
-        </div>
-
-        <div style={styles.column}>
-          <h4 style={styles.columnTitle}>Follow Us</h4>
-          <div style={styles.socialIcons}>
-            <a href="https://facebook.com" style={styles.socialIcon}>
-              <i className="fab fa-facebook"></i>
-            </a>
-            <a href="https://instagram.com" style={styles.socialIcon}>
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="https://twitter.com" style={styles.socialIcon}>
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="https://youtube.com" style={styles.socialIcon}>
-              <i className="fab fa-youtube"></i>
-            </a>
+        <div style={styles.section}>
+          <h4 style={styles.header}>Services</h4>
+          <div style={styles.servicesList}>
+            <div>
+              <a style={styles.link} href="periodicservices">Periodic Services</a>
+              <a style={styles.link} href="#denting">Denting and Painting</a>
+              <a style={styles.link} href="#batteries">Batteries</a>
+              <a style={styles.link} href="#carspa">Accidental Car Repair</a>
+              <a style={styles.link} href="#acservice">Tyres and Wheels</a>
+            </div>
+            <div>
+              <a style={styles.link} href="#insurance">Custom Services</a>
+              <a style={styles.link} href="#windscreen">Windshield and Glass</a>
+              <a style={styles.link} href="#lights">Lights and Fitments</a>
+              <a style={styles.link} href="#decarbonization">Engine Decarbonization</a>
+              <a style={styles.link} href="#wash">Car Wash</a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div style={styles.bottom}>
-        <p style={styles.copyRight}>
-          © 2024 Garage Services. All Rights Reserved.
-        </p>
+        <div style={styles.section}>
+          <h4 style={styles.header}>Quick Contact</h4>
+          <ul style={styles.list}>
+            <li style={styles.listItem}>
+              <b>Call Us:</b> +91-8080056951
+            </li>
+            <li style={styles.listItem}>
+              <b>Email:</b> urjaautomotive@gmail.com
+            </li>
+            <p style={styles.contactInfo}>
+              <b>Address:</b> Panchwati, Sri Ram Nagar, Konark Nagar, Nashik, Maharashtra 422006, India
+            </p>
+          </ul>
+        </div>
+      </div>
+      <div style={styles.divider}>
+        <p style={styles.dividerText}>
+          Copyright © 2024 All rights Reserved UrjaAutomobile.
+                </p>
+        <br></br>
       </div>
     </footer>
   );
-}
-
-const styles = {
-  footer: {
-    backgroundColor: "#224",
-    color: "#fff",
-    paddingTop: "50px",
-    paddingBottom: "10px",
-    fontFamily: "Arial, sans-serif",
-    marginTop: "50px",
-  },
-  container: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    padding: "0 20px",
-  },
-  column: {
-    width: "30%",
-    marginBottom: "20px",
-  },
-  columnTitle: {
-    fontSize: "18px",
-    marginBottom: "15px",
-    color: "#ffb400",
-  },
-  list: {
-    listStyle: "none",
-    paddingLeft: "0",
-  },
-  listItem: {
-    marginBottom: "10px",
-  },
-  link: {
-    color: "#fff",
-    textDecoration: "none",
-    transition: "color 0.3s",
-  },
-  linkHover: {
-    color: "#ffb400",
-  },
-  socialIcons: {
-    display: "flex",
-    gap: "15px",
-    marginTop: "10px",
-  },
-  socialIcon: {
-    fontSize: "24px",
-    color: "#fff",
-    textDecoration: "none",
-    transition: "color 0.3s",
-  },
-  socialIconHover: {
-    color: "#ffb400",
-  },
-  bottom: {
-    textAlign: "center",
-    marginTop: "20px",
-  },
-  copyRight: {
-    fontSize: "14px",
-    color: "#bbb",
-  },
 };
 
 export default Footer;

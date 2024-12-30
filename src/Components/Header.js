@@ -44,6 +44,11 @@ export default function Header() {
                 Login
               </Link>
             </li>
+            <li class="nav-item">
+              <Link class="nav-link" to="/customer-dash">
+                CustomerDash
+              </Link>
+            </li>
           </ul>
           <form class="d-flex" role="search">
             <input

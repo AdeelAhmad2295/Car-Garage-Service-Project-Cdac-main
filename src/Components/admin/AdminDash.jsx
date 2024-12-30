@@ -21,6 +21,7 @@ export default function AdminDash() {
         {isSidebarOpen ? "Close Sidebar" : "Open Sidebar"}
       </button>
 
+
       {/* Sidebar */}
       <div
         className={`sidebar ${isSidebarOpen ? "open" : ""}`}
@@ -32,7 +33,7 @@ export default function AdminDash() {
         <div className="sidebar-header">
           <h3 style={styles.heading}>Admin Dashboard</h3>
           <button onClick={toggleSidebar} style={styles.closeButton}>
-            ×
+            
           </button>
         </div>
         <ul className="list-unstyled">
@@ -44,6 +45,11 @@ export default function AdminDash() {
           <li>
             <Link to="/staff" style={styles.link}>
               Staff Management
+            </Link>
+          </li>
+          <li>
+            <Link to="/customer" style={styles.link}>
+              Customer Management
             </Link>
           </li>
           <li>
@@ -99,63 +105,117 @@ const styles = {
   wrapper: {
     display: "flex",
     position: "relative",
+    minHeight: "100vh", // Full-page height
+    backgroundColor: "#f9f9f9", // Soft off-white background for less strain on eyes
+    fontFamily: "'Inter', sans-serif", // Clean, modern font
+    lineHeight: "1.6", // Improved readability
   },
   toggleButton: {
     position: "absolute",
-    top: "-5px",
+    top: "20px",
     left: "20px",
-    zIndex: "1050", // Ensure the button appears above everything else
+    zIndex: 1050, // Ensures it’s above all content
+    backgroundColor: "#007bff", // Friendly, accessible blue color
+    color: "#fff",
+    padding: "12px 20px",
+    borderRadius: "8px",
+    fontSize: "16px",
+    border: "none",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+    cursor: "pointer",
+    transition: "all 0.3s ease", // Smooth hover effect
+  },
+  toggleButtonHover: {
+    backgroundColor: "#0056b3", // Darker blue for hover
+    transform: "scale(1.05)", // Slight enlargement on hover
   },
   contentArea: {
     width: "100%",
     padding: "20px",
-    marginLeft: "0px", // Adjust margin for open sidebar
-    transition: "margin-left 0.3s ease", // Smooth transition for content shift
+    marginLeft: "0px",
+    transition: "margin-left 0.3s ease", // Smooth transition for layout changes
+    overflowY: "auto", // Ensure scrolling if content overflows
   },
   container: {
-    padding: "20px",
+    padding: "25px",
+    backgroundColor: "#fff", // Clean white container background
+    borderRadius: "10px", // Smooth, rounded corners
+    border: "1px solid #e0e0e0", // Light gray border for definition
+    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)", // Soft shadow for elevation
+    maxWidth: "600px", // Restrict width for better readability
+    margin: "50px auto", // Center alignment
   },
   card: {
     marginTop: "20px",
-    padding: "10px",
+    padding: "20px",
+    backgroundColor: "#fff",
+    borderRadius: "10px",
+    border: "1px solid #e0e0e0",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease", // Smooth transitions for hover
+  },
+  cardHover: {
+    transform: "translateY(-5px)", // Subtle lift on hover
+    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.15)", // Enhanced shadow for focus
   },
   sidebar: {
     position: "fixed",
     top: 0,
-    left: "-250px", // Sidebar is initially hidden off-screen
+    left: "-250px", // Initially hidden
     width: "250px",
     height: "100%",
-    backgroundColor: "#333",
-    color: "white",
-    paddingTop: "20px",
+    backgroundColor: "#f5f5f5", // Light gray background for sidebar
+    color: "#333", // Darker gray for readable text
+    paddingTop: "30px",
     paddingLeft: "20px",
-    transition: "transform 0.3s ease", // Smooth transition when opening/closing
+    transition: "transform 0.3s ease", // Smooth slide-in effect
     zIndex: 1000,
+    borderRight: "1px solid #e0e0e0",
   },
   sidebarOpen: {
-    transform: "translateX(250px)", // Sidebar slides in when open
+    transform: "translateX(250px)", // Slide-in effect
   },
   heading: {
-    color: "#fff",
+    color: "#333", // Dark gray for strong text contrast
+    fontSize: "24px",
+    fontWeight: "bold",
     marginBottom: "20px",
-    top:"-10px",
+    letterSpacing: "0.5px", // Slight spacing for readability
   },
   link: {
-    color: "white",
+    color: "#007bff", // Accessible blue for links
     display: "block",
-    padding: "10px",
+    padding: "12px 18px",
     textDecoration: "none",
     marginBottom: "10px",
-    transition: "background-color 0.3s",
+    borderRadius: "6px",
+    backgroundColor: "#f8f9fa", // Light background for links
+    border: "1px solid #e0e0e0", // Subtle border for definition
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.05)", // Subtle shadow
+    transition: "all 0.3s ease", // Smooth hover effects
+  },
+  linkHover: {
+    backgroundColor: "#e9ecef", // Slightly darker shade on hover
+    transform: "translateX(5px)", // Subtle movement for focus
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Enhanced shadow on hover
   },
   closeButton: {
-    color: "#fff",
-    fontSize: "30px",
+    color: "#333", // Dark gray for button
+    fontSize: "24px",
     background: "transparent",
     border: "none",
     position: "absolute",
-    right: "10px",
-    top: "-10px",
+    right: "20px",
+    top: "20px",
+    cursor: "pointer",
+    transition: "all 0.3s ease", // Smooth hover effect
+  },
+  closeButtonHover: {
+    color: "#dc3545", // Red for hover to indicate close action
+    transform: "rotate(90deg)", // Visual feedback on hover
   },
 };
+
+
+
+
